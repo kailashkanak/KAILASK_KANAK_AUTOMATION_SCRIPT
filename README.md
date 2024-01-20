@@ -3,4 +3,6 @@ This Repository contains Automation scripts for Xoxoday Website
 <br>
 Author By Kailash Kanak
 <br>
-Another Project "JavaProgramsList" added here
+The Project "JavaProgramsList" contains java string program:
+  a. Remove Duplicate Character
+  b. Display the count of text
