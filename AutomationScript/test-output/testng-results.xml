@@ -2,35 +2,35 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-01-21T00:41:51Z" name="Default suite" finished-at="2024-01-21T00:43:31Z" duration-ms="100174">
+  <suite started-at="2024-01-22T07:26:02 IST" name="Default suite" finished-at="2024-01-22T07:26:34 IST" duration-ms="32597">
     <groups>
     </groups>
-    <test started-at="2024-01-21T00:41:51Z" name="Default test" finished-at="2024-01-21T00:43:31Z" duration-ms="100174">
-      <class name="automationscript.ImageSize">
-        <test-method is-config="true" signature="startBrowser()[pri:0, instance:automationscript.ImageSize@4ddbbdf8]" started-at="2024-01-21T00:41:51Z" name="startBrowser" finished-at="2024-01-21T00:42:12Z" duration-ms="21036" status="PASS">
+    <test started-at="2024-01-22T07:26:02 IST" name="Default test" finished-at="2024-01-22T07:26:34 IST" duration-ms="32597">
+      <class name="automationscript.FormAutomation">
+        <test-method is-config="true" signature="launchBrowser()[pri:0, instance:automationscript.FormAutomation@16610890]" started-at="2024-01-22T07:26:02 IST" name="launchBrowser" finished-at="2024-01-22T07:26:22 IST" duration-ms="20115" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- startBrowser -->
-        <test-method signature="findBrokenLink()[pri:0, instance:automationscript.ImageSize@4ddbbdf8]" started-at="2024-01-21T00:42:12Z" name="findBrokenLink" finished-at="2024-01-21T00:43:31Z" duration-ms="78896" status="PASS">
+        </test-method> <!-- launchBrowser -->
+        <test-method signature="formFill()[pri:0, instance:automationscript.FormAutomation@16610890]" started-at="2024-01-22T07:26:22 IST" name="formFill" finished-at="2024-01-22T07:26:34 IST" duration-ms="12142" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- findBrokenLink -->
-        <test-method is-config="true" signature="takeScreenshot(org.testng.ITestResult)[pri:0, instance:automationscript.ImageSize@4ddbbdf8]" started-at="2024-01-21T00:43:31Z" name="takeScreenshot" finished-at="2024-01-21T00:43:31Z" duration-ms="2" status="PASS">
+        </test-method> <!-- formFill -->
+        <test-method is-config="true" signature="takeScreenshot(org.testng.ITestResult)[pri:0, instance:automationscript.FormAutomation@16610890]" started-at="2024-01-22T07:26:34 IST" name="takeScreenshot" finished-at="2024-01-22T07:26:34 IST" duration-ms="1" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=findBrokenLink status=SUCCESS method=ImageSize.findBrokenLink()[pri:0, instance:automationscript.ImageSize@4ddbbdf8] output={null}]]]>
+                <![CDATA[[TestResult name=formFill status=SUCCESS method=FormAutomation.formFill()[pri:0, instance:automationscript.FormAutomation@16610890] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- takeScreenshot -->
-        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:automationscript.ImageSize@4ddbbdf8]" started-at="2024-01-21T00:43:31Z" name="closeBrowser" finished-at="2024-01-21T00:43:31Z" duration-ms="215" status="PASS">
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:automationscript.FormAutomation@16610890]" started-at="2024-01-22T07:26:34 IST" name="closeBrowser" finished-at="2024-01-22T07:26:34 IST" duration-ms="274" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeBrowser -->
-      </class> <!-- automationscript.ImageSize -->
+      </class> <!-- automationscript.FormAutomation -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
