@@ -9,3 +9,10 @@ Author By Kailash Kanak
   <br>
     b. Display the count of text
 
+2. Project AutomationScript contains, test script to:
+    a. To Find Broken Link
+    b. Form fill
+    c. Image Size
+    d. Imasge Alt Text
+4. 
+
