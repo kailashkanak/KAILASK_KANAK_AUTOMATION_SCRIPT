@@ -3,14 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="automationscript.FileUpload">
+      <class name="automationscript.DragAndDrop">
         <methods>
-          <include name="fileUpload"/>
-          <include name="takeScreenshotOfFailedTestCase"/>
+          <include name="dragAndDrop"/>
           <include name="closeBrowser"/>
           <include name="launchBrowser"/>
         </methods>
-      </class> <!-- automationscript.FileUpload -->
+      </class> <!-- automationscript.DragAndDrop -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
