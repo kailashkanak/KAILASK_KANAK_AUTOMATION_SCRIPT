@@ -2,35 +2,35 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-01-22T07:26:02 IST" name="Default suite" finished-at="2024-01-22T07:26:34 IST" duration-ms="32597">
+  <suite started-at="2024-01-24T15:08:02 IST" name="Default suite" finished-at="2024-01-24T15:09:55 IST" duration-ms="112424">
     <groups>
     </groups>
-    <test started-at="2024-01-22T07:26:02 IST" name="Default test" finished-at="2024-01-22T07:26:34 IST" duration-ms="32597">
-      <class name="automationscript.FormAutomation">
-        <test-method is-config="true" signature="launchBrowser()[pri:0, instance:automationscript.FormAutomation@16610890]" started-at="2024-01-22T07:26:02 IST" name="launchBrowser" finished-at="2024-01-22T07:26:22 IST" duration-ms="20115" status="PASS">
+    <test started-at="2024-01-24T15:08:02 IST" name="Default test" finished-at="2024-01-24T15:09:55 IST" duration-ms="112424">
+      <class name="automationscript.ImageAltText">
+        <test-method is-config="true" signature="launchBrowser()[pri:0, instance:automationscript.ImageAltText@16610890]" started-at="2024-01-24T15:08:02 IST" name="launchBrowser" finished-at="2024-01-24T15:08:32 IST" duration-ms="30033" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchBrowser -->
-        <test-method signature="formFill()[pri:0, instance:automationscript.FormAutomation@16610890]" started-at="2024-01-22T07:26:22 IST" name="formFill" finished-at="2024-01-22T07:26:34 IST" duration-ms="12142" status="PASS">
+        <test-method signature="altText()[pri:0, instance:automationscript.ImageAltText@16610890]" started-at="2024-01-24T15:08:32 IST" name="altText" finished-at="2024-01-24T15:09:54 IST" duration-ms="82156" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- formFill -->
-        <test-method is-config="true" signature="takeScreenshot(org.testng.ITestResult)[pri:0, instance:automationscript.FormAutomation@16610890]" started-at="2024-01-22T07:26:34 IST" name="takeScreenshot" finished-at="2024-01-22T07:26:34 IST" duration-ms="1" status="PASS">
+        </test-method> <!-- altText -->
+        <test-method is-config="true" signature="takeScreenshotOfFailedTestCase(org.testng.ITestResult)[pri:0, instance:automationscript.ImageAltText@16610890]" started-at="2024-01-24T15:09:54 IST" name="takeScreenshotOfFailedTestCase" finished-at="2024-01-24T15:09:54 IST" duration-ms="2" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=formFill status=SUCCESS method=FormAutomation.formFill()[pri:0, instance:automationscript.FormAutomation@16610890] output={null}]]]>
+                <![CDATA[[TestResult name=altText status=SUCCESS method=ImageAltText.altText()[pri:0, instance:automationscript.ImageAltText@16610890] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- takeScreenshot -->
-        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:automationscript.FormAutomation@16610890]" started-at="2024-01-22T07:26:34 IST" name="closeBrowser" finished-at="2024-01-22T07:26:34 IST" duration-ms="274" status="PASS">
+        </test-method> <!-- takeScreenshotOfFailedTestCase -->
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:automationscript.ImageAltText@16610890]" started-at="2024-01-24T15:09:54 IST" name="closeBrowser" finished-at="2024-01-24T15:09:55 IST" duration-ms="188" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeBrowser -->
-      </class> <!-- automationscript.FormAutomation -->
+      </class> <!-- automationscript.ImageAltText -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
