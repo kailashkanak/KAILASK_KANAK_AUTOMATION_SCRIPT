@@ -1,0 +1,553 @@
+Selenium is a free (open-source) automated testing framework used to validate web applications across different browsers and platforms. 
+
+You can use multiple programming languages like Java, C#, Python, etc to create Selenium Test Scripts. 
+
+Testing done using the Selenium testing tool is usually referred to as Selenium Testing.
+
+Selenium Software is not just a single tool but a suite of software, each piece catering to different Selenium QA testing needs of an organization. 
+
+. Selenium Integrated Development Environment (IDE)
+. Selenium Remote Control (RC)
+. WebDriver
+. Selenium Grid
+
+*****************************************************************************************************************************
+
+Q. What is the super interface of WebDriver?
+Ans: SearchContext
+
+*****************************************************************************************************************************
+
+Q. Explain 
+	
+	WebDriver driver = new ChromeDriver();
+
+Here we are creating object reference of WebDriver type which is pointing to chrome driver object.
+
+
+WebDriver is an interface and we are creating an object reference of the type WebDriver instantiating an object of ChromeDriver.
+
+This is also called Dynamic polymorphism or run-time polymorphism.
+
+****************************************************************************************************************************
+
+Q. How to pause a test execution for 5 seconds at a specific point?
+
+Ans: Thread.sleep(5000);
+
+****************************************************************************************************************************
+Q. How to press Enter key on textbox in selenium?
+
+Ans: driver.findElement(By.id("txtbox1")).sendKeys(keys.ENTER);
+
+****************************************************************************************************************************
+
+Q. Can I navigate back and forth in a browser in Selenium webdriver?
+
+Ans: 
+	1. driver.navigate().forward()
+	2. driver.navigate().back()
+	3. driver.navigate().refresh()
+	4. driver.navigate().to("url")
+
+****************************************************************************************************************************
+
+Q. How to fetch the current page url?
+
+Ans: String url = driver.getCurrentURL();
+
+****************************************************************************************************************************
+
+Q. What are the ways to refresh a webpage?
+
+Ans:
+	1. driver.navigate().refresh();
+	2. driver.getCurrentUrl();
+	3. driver.navigate().to("url");
+	4. driver.senKeys(keysF5)
+
+****************************************************************************************************************************
+
+Q. Difference between getWindowHandle() and getWindowHandles()?
+
+Ans: 
+	1. driver.getWindowHandle(): 
+			It returns the handle (a unique identifier) of the current page.
+	
+	2. driver.getWindowHandles():
+
+				It returns a set of handles of all the open windows.
+
+Q. How to handle multiple windows:
+
+	How to handles multiple window:
+
+	//Capture the window handle of the main window
+	String mainWindowHandle=driver.getWindowHandle();
+
+	Step 1: Set<String> handles=driver.getWindowHandles();
+
+	Step 2: List<String> hList=new ArrayList<String>(handles);
+
+	Step 3: Loop
+
+	for(String s:hList)
+	{
+			String title=driver.switchTo().window(s).getTitle();
+	Step 4:		if(title.contains("Specify page title of the window")
+			{
+				System.out.println("We are on the right window");
+			}
+	}
+
+Step 5: Switch to parent window
+	driver.switchTo().window(mainWindowHandle); 
+
+
+
+
+****************************************************************************************************************************
+
+Q.
+
+ 1. driver.close(): It close the current window instance.
+
+ 2. driver.quit(): It close all the opened windows.
+
+****************************************************************************************************************************
+
+Q. Difference between driver.findElement() and driver.findElements()
+
+	1. driver.findElement(): It returns a single WebElement (found first)
+
+	2. driver.findElements(): It returns a list of WebElements.
+
+
+	Note:
+
+	The major difference between them is:
+
+	1. If no element is found, then driver.findElement() throws an exception "NoSuchElementException"
+
+	2. If no element is found, then driver.findElements() returns a list of 0 element
+
+
+****************************************************************************************************************************
+
+Q. How to find whether an element is displayed on the webpage?
+
+Ans: 1. isDisplayed()
+     2. isSelected()
+     3. isEnable()
+
+****************************************************************************************************************************
+
+Q. How to select a value in a dropdown?
+
+Ans: By using --> Select class
+
+Example: 
+
+	WebElement dropDown=driver.findElement(By.xpath("paste the xpath of the dropdown");
+	
+	Select select = new Select(dropDown);
+
+	1. select.SelectByVisibleText("text"); // SelectByVisibleText() method
+
+	2. select.SelectByValue(value);
+
+	3. select.SelectByIndex(index no);
+
+
+Q. Write an automation script to display the dropdown items in ascending order.
+
+
+	WebDriver driver = new ChromeDriver();
+
+	driver.manage().window().maxmimize();
+
+	driver.get("https://www.xoxoday.com/plum/demo");
+
+	//locating dropdown
+
+	WebElement dropDown = driver.findElement(By.id("dropdwn-1xcd"));
+
+	Select select = new Select(dropDown); 
+
+	List<WebElement> dropdownlist = select.getOptions();
+
+	List<String> options = new ArrayList<String>();
+
+	for(WebElement e:dropdownlist)
+	{
+		options.add(e.getText());
+		
+		System.out.println(e.getText());
+	}
+
+	// sorting list in ascending order
+
+	Collections.sort(options);
+
+****************************************************************************************************************************
+Q. How to mouse hover on a WebElement using WebDriver?
+
+Ans: By using Actions class
+
+Example:
+
+	WebElement mouseHover = driver.findElement(By.id(""));
+
+	Actions action = new Actions(driver);
+
+	// Mouse hover on an element
+
+	action.moveToElement(mouseHover).perform();
+
+****************************************************************************************************************************
+
+Q. How to handle pop-up?
+
+Ans:
+	To handle pop-up, we need to switch to the alert window.
+
+Example:
+
+	1. driver.switchTo().alert().accept(); // clicking on alert window ok button
+
+	2. driver.switchTo().alert().dismiss(); // click on cancel button
+
+	3. String alertMessage = driver.switchTo().alert().getText();
+
+		System.out.println(alertMessage); // displaying alert message
+
+
+****************************************************************************************************************************
+
+
+Q. How do we find broken links on a web page?
+
+	WebDriver driver = new ChromeDriver();
+
+	driver.manage().window().maximize();
+	driver.window().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+	driver.get("https://www.google.com");
+
+	List<WebElement> pageLinks=driver.findElements(By.tagName("a"));
+
+	for(WebElement link:pageLinks)
+	{
+		String url = link.getAttribute("href");
+	
+		HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+
+		connection.connect();
+
+		int responseCode = connection.getResponseCode();
+
+		if(responseCode>=400)
+		{
+			System.out.println(url+" is broken");
+		}
+	}
+
+
+****************************************************************************************************************************
+
+Q. List some scenarios which cannot be automated using selenium webdriver?
+
+Ans:
+	1. Bitmap comparison
+	2. Automating captcha
+	3. Cannot automate to read Barcode
+	4. Windows based pop ups
+
+****************************************************************************************************************************
+
+Q. What is object Repository in Selenium Webdriver?
+
+Ans: Object Repository is used to store elements locator value in a centralized location instead of hard coding them in the scripts (POM)
+
+****************************************************************************************************************************
+
+Q. How to upload a file in Selenium webdriver?
+
+Ans: We use sendKeys() method to interact with the file input element on the webpage.
+
+	Example:
+
+	driver.get("https://abc.com");
+
+	WebElement fileinput = driver.findElement(By.id(" "));
+
+	fileinput.sendKeys("d://testreport/first.csv");
+
+****************************************************************************************************************************
+
+Q. How to download a file in selenium?
+
+Ans: By using AutoIT script.
+
+****************************************************************************************************************************
+
+
+Q. How to switch between frames in selenium webdriver?
+
+Ans: We use:
+
+	driver.switchTo().frame(index no); 
+//index number starts from 0. if there are 3 frames, and want to switch to 2nd frame then we will write:
+
+	driver.switchTo().frame(1); // this will help to switch to 2nd frame.
+
+****************************************************************************************************************************
+
+Q. How to resize a window?
+
+Ans: 
+	Dimension d = new Dimension(500,600);
+
+	driver.manage().window().resize(d);
+
+****************************************************************************************************************************
+
+
+Q. How to scroll webpage up or down?
+
+Ans: Javascript scrollBy();
+
+
+****************************************************************************************************************************
+
+Q. How to perform right click action?
+
+Ans:
+
+	Actions action = new Actions(driver);
+
+	WebElement rightclickelement = driver.findElement(By.id("locator"));
+
+	action.contextClick(rightclickelement).build().perform();
+
+****************************************************************************************************************************
+
+Q. How to perform doubleClick()?
+
+Ans:
+	We use Actions class 
+
+	Actions action = new Actions(driver);
+
+	action.doubleClick();
+
+****************************************************************************************************************************
+
+Q. How to perform drag And Drop?
+
+Ans: We can perform drag and drop in two ways:
+
+	1. clickAndHold(source WebElement).moveToElement(destination webelement).release().build().perform();
+
+	2. dragAndDrop(source_Webelement, targetWebelement).build().perform();
+
+Code to demonstrate drag and drop operation:
+
+	WebDriver driver = new ChromeDriver();
+
+	driver.get("https://abc.com");
+
+	WebElement sourceElement = driver.findElement(By.id(" "));
+
+	WebElement targetElement = driver.findElement(By.id(" "));
+
+	Actions action = new Actions(driver);
+
+	action.clickAndHold(sourceElement).moveToElement(targetElement).release().build().perform();
+
+							OR
+
+	action.dragAndDrop(sourceElement, targetElement).build().perform();
+
+
+****************************************************************************************************************************
+
+Q. How to write data in excel?
+
+Ans:
+
+	WebDriver driver = new ChromeDriver();
+
+	driver.manage().window().maximize();
+
+	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+	driver.get("https://www.google.com");
+
+	String url = "https://Google.com";
+
+	List<WebElement> imageList = driver.findElements(By.tagName("img"));
+
+	
+		try
+		{
+			FileWriter outputfile =new FileWriter("D://testreport/homepageImageList.csv");
+
+			CSVWriter writer = new CSVWriter(outputfile);
+
+			String[] header = {"S_No","Page Link","ImageLink","Image Size"};
+
+			writer.writeNext(header);
+
+			int sno = 1; 
+
+			for(WebElement image:imageList)
+			{
+				URLConnection connection = new URL(image.getAttribute("src")).openConnection();
+
+				String imageLink = image.getAttribute("src");
+
+				String serialNum = Integer.toString(sno);
+
+				sno++;
+
+				int size = connection.getContentLength();
+
+				String imageSize = Integer.toString(size);
+
+				String[] data = {serialNum,url,imageLink,imageSize};
+
+				writer.writeNext(data);
+			}
+
+			writer.close();
+
+			
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+	
+
+
+*****************************************************************************************************************
+
+Q. How to take screenshot
+
+	WebDriver driver = new ChromeDriver();
+	driver.manage().window().maximize();
+	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	driver.get("httpa://www.amazon.com");
+	
+	File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+
+	Files.copy(src, new File("D:\\screenshot\\amazonImage.png"));
+
+
+*****************************************************************************************************************
+
+Q. Program to display third largest value from String Array:
+
+Here is the string Array  :  {"77$","45$","90$","12$","95$","90"}
+
+
+
+
+public class FindLargestThirdNumber {
+
+	public static void main(String[] args) {
+
+		String[] words = {"77$","45$","90$","12$","95$","90"};
+		int[] arr = new int[words.length];
+		
+		for(int i=0;i<words.length;i++)
+		{
+			words[i]=words[i].replace("$", "");
+			
+			arr[i] = Integer.parseInt(words[i]);
+		}
+		
+		for(int i=0;i<arr.length;i++)
+		{
+			for(int j=i+1;i<arr.length;i++)
+			{
+				if(arr[i]>arr[j])
+				{
+					int temp=arr[i];
+					arr[i]=arr[j];
+					arr[j]=temp;
+				}
+			}
+		}
+		
+		System.out.println(arr[2]);
+
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
