@@ -1,0 +1,576 @@
+ # TestNG:
+TestNG is a testing framework in Java that is primarily used for unit testing, integration testing, functional testing of software application.
+
+***************************************************************************************************************************
+
+# Advantages of TestNG:
+	1. It allows parallel execution of test methods.
+
+	2. It allows to define dependency of one test method over other method.
+
+	3. It allows to set test priority.
+
+	4. It allows grouping of test methods into test groups.
+
+***************************************************************************************************************************
+
+Q. What is TestNG Assert?
+
+Ans: TestNG Assert helps us to verify the condition of the test in the middle of the test run.
+
+***************************************************************************************************************************
+
+
+Q. What is the importance of testng xml file?
+
+	1. It is used to configure our test suite in a single file.
+
+	2. It allows to pass parameters to test cases.
+
+	3. Allows to add priorities to the test cases.
+
+	4. Allows to configure parallel execution test cases.
+
+***************************************************************************************************************************
+
+
+
+# Hierarchy of TestNG XML
+
+<Suite>
+	<Test>
+		<Classes>
+			<Class>
+				<Method>
+
+				</Method>
+			</Class>
+		</Classes>
+	</Test>
+</Suite>
+
+
+***************************************************************************************************************************
+
+
+# Suppose we have five classes which consists of different test cases. Now we can group these classes in more than one <test> module. For eg:
+
+1. Day1
+2. Day2
+3. Day3
+4. Day4
+5. Day5
+
+Now we will group the above classes in more than one <test> module:
+
+<Suite name="Suite1">
+<test name="LoginApp">
+	<classes>
+		<class name="package name.Day1"/>
+		<class name="package name.Day2"/>
+	</classes>
+</test>
+<test name="RegistrationApp">
+	<classes>
+		<class name="package name.Day3"/>
+		<class name="package name.Day4"/>
+		<class name="package name.Day5"/>
+	</classes>
+</test>
+</suite>
+
+	
+****************************************************************************************************************************
+
+Q. How to skip a method from executing test case?
+Ans: Every method in a class is a test case. Sometime we do not want to execute any specific method. To do so, we can do like below:
+
+<class>
+<methods>
+<exclude="method name"/>
+</methods>
+</class>
+
+Example:
+
+	<suite>
+		<test>
+			<classes>
+				<class>
+					<methods>
+						<exclude name="Method name"/>
+					</methods>
+				</class>
+			</classes>
+		</test>
+	</suite>
+
+****************************************************************************************************************************
+
+Q. How to include a method in a test case?
+
+Ans: 
+
+<class>
+ <methods>
+  <include="method name"/>
+ </methods>
+</class>
+
+****************************************************************************************************************************
+
+Q. How to run test cases at package level?
+Ans:
+	<suite>
+	 <test>
+	  <packages>
+	   <package name="package name"/>
+	  </packages>
+	 </test>
+	</suite>
+****************************************************************************************************************************
+
+Groups:
+	Suppose we have 100 testcases, out of which we want to execute 10 testcases every day (a kind of smoke test)
+To do so, we can groups our test cases.
+
+<groups> can be added in between <test> and <classes> tag in testng.xml file
+
+Example:
+
+@Test(groups={"smoke"})
+public void pLoan()
+{
+	System.out.println("Personal Loan");
+}
+
+@Test(groups={"regression"})
+public void carLoan()
+{
+	System.out.println("Car Loan");
+}
+
+@Test(groups={"smoke"})
+public void bikeLoan()
+{
+	System.out.println("Bike Loan");
+}
+
+@Test(groups={"smoke"})
+public void eduLoan()
+{
+	System.out.println("Education Loan");
+}
+
+
+Next Step: Now we will open testng.xml file and write the followings:
+
+<suite>
+ <test>
+  <groups>
+   <run>
+    <include name="smoke"/>
+   </run>
+  </groups>
+   <classes>
+    <class name=package name.class name />
+   </classes>
+ </test>
+</suite>
+
+****************************************************************************************************************************
+
+Q dependsOnMethod
+	
+	@Test(dependsOnMethod={"Method name"})
+
+eg:
+
+class Demo
+{
+	@Test(dependsOnMethod={"c"})
+	public void a()
+	{
+		System.out.println("Method a");
+	}
+
+	@Test(dependsOnMethod={"a"})
+	public void b()
+	{
+		System.out.println("Method b");
+	}
+
+	@Test
+	public void c()
+	{
+		System.out.println("Method c");
+	}
+}
+	
+****************************************************************************************************************************
+
+Q. How to skip a particular test case from execution?
+
+Ans: We can use 
+	
+	@Test(enabled=false)
+	public void messg()
+	{
+		System.out.println("Method Messg");
+	}
+
+****************************************************************************************************************************
+
+Q. Annotation Helper:
+	i. dependsOnMethods
+	ii. enabled=false
+	iii. timeout: This is used when we know that a particular testcase (method) is taking more time.
+	
+		@Test(timeOut=4000)
+					: This means it will wait for 4 seconds before it throw an exception.
+
+****************************************************************************************************************************
+
+----------------------------------------- Parameterization -----------------------------------------------------------------
+
+Parameters are used to execute the same testcase again and over again by passing different values.
+
+Note: These parameters can be passed just after <suite> tag of testng.xml file.
+
+<suite>
+ <parameter name="browser" value="chrome" />
+  <test name="Test1">
+   <classes>
+     <class name="packagename.classname"/>
+     <class name="packagename.classname"/>
+    </classes>
+   </test>
+</suite>
+
+
+
+To implement this parameter in testcase
+
+class TestParameter
+{
+	WebDriver driver;
+	@Test
+	@Parameters({"browser"})
+	public void launchBrowser(String browser)
+	{
+		driver=new ChromeDriver();
+		System.out.println("Launched :"+browser);
+	}
+}
+
+****************************************************************************************************************************
+
+Topic: Data Provider
+
+Global environment variables can be incorporated through Selenium. 
+Parameterizing with multiple data sets by running tests with multiple combination. This can be achieved by using DataProvider annotation
+
+Example:
+
+@DataProvider
+public Object getData()
+{
+	//1st combination --> Username and password --> good credit history
+	//2nd combination --> Username and password --> No credit history
+	//3rd combination --> Username and password --> Fraudent credit history
+
+Object[][] data=new Object[3][2];
+
+First set:
+	Object[0][0]="Firstset username";
+	Object[0][1]="Firstset password";
+
+Second set:
+	Object[1][0]="Secondset username";
+	Object[1][1]="Secondset password";
+
+Third set:
+	Object[2][0]="Thirdset username";
+	Object[2][1]="Thirdset password";
+
+return data;
+}
+
+Now we need to catch these data into our testcase
+
+@Test(dataProvider="getData")
+public void catchData(String uname, String pwd)
+{
+	s.o.p("user name:"+uname);
+	s.o.p("Password:"+pwd);
+}
+
+
+Q: How do you achieve Parameterization?
+
+Ans: We can achieve parameterization in two ways:
+	1. We can drive the data from testng.xml file.
+	2. We can also drive data by using DataProvide annotation (@DataProvider)
+
+****************************************************************************************************************************
+
+------------------------------------------Running Test in Parallel----------------------------------------------------------
+
+To run Tests in parallel:
+
+Open testNg.xml file
+
+Inside the <suite> tag, use 'parallel' attribute
+
+<suite name="ABC" parallel="tests" thread-count="2">
+
+Even we can run testcases parallel at the class level'
+
+<test name="test1" parallel="classes" thread-count="2">
+
+Note: If we want to see the test report of test cases:
+
+Step 1: Right click on the project --> Refresh
+Step 2: Now you can see --> testoutput folder --> index.html --> go to its properties --> copy the path
+Step 3: open browser --> paste the path in the url box --> Now you can see the report description
+
+
+
+
+****************************************************************************************************************************
+
+-----------------------------------------Listeners--------------------------------------------------------------------------
+
+TestNG Listeners listen to your testcases. It listen to your execution results.
+
+When it hear that something is failed then it will invoke one particular method.
+
+ITestListener: 
+		ITestListener is an interface which have all the methods 
+
+Demonstration of Listener
+
+
+public class Listeners implements ITestListener //Here it will ask you to implement all unimplemented methods, 
+						  right click on the class and add unimplemented methods
+{
+
+	// It will add six methods here
+
+	public void onTestStart(ITestResult result)
+	{
+
+	}
+
+	public void onTestSuccess(ITestResult result)
+	{
+
+	}
+
+	public void onTestFailure(ITestResult result)
+	{
+		//This method is used to take screenshot of the failed testcase
+
+		if(ITestResult.FAILURE==result.getStatus())
+		{
+			File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+			
+			FileUtils.copyfile(screenshot, new File("d://testreport/failure1.png");
+		}
+
+
+	}
+
+	public void onTestSkipped(ITestResult result)
+	{
+
+	}
+
+}
+
+
+Note: After this we need to tell testng.xml file where exactly is Listener is located.
+      
+      It is mandatory to specify the location of listeners in testng.xml file
+
+Steps:
+
+<suite name="suite1">
+<listeners>
+ <listener class-name="packagename.classname"/>
+ </listeners>
+
+
+ITestResult: It is an interface which keep all information about the test case which we executed.
+
+
+Q. How to execute failed test case?
+Ans: We can use IRetryAnalyzer interface	
+
+
+
+****************************************************************************************************************************
+Important topics of TestNg
+
+. Importance of TestNg xml file
+. Controlling Testcase execution from testng xml file
+. Include/Exclude mechanism
+. Understanding TestNG Annotation - Testng Annotations are used to define the behaviour of test methods
+. Groups
+. Parameterization in testng xml file
+. DataProvider Annotation
+. Annotation helper attribute
+. Running test in parallel
+. TestNg Listeners
+
+****************************************************************************************************************************
+
+Taking Screenshot of failed TestCase & page title validation using Hard Assert
+
+//How To take screenshot of failed test case:
+
+public class TakeScreenshotOfFailedTestCase
+{
+	WebDriver driver;
+
+	@BeforeTest
+	public void launchBrowser()
+	{
+		
+		WebDriverManager.chromedriver().setup();
+	
+		driver = new ChromeDriver();
+
+		driver.manage().window().maximize();
+
+		driver.manage().deleteAllCookies();
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+	}
+
+	@Test
+	public void verifyPageTitle()
+	{
+		driver.get("https://www.xoxoday.com");
+	
+		String actual_title = driver.getTitle();
+
+		String expected_Title = "Rewards, Incentives, Payouts, Perks, Loyalty & Engagement";
+
+		Assert.assertEquals(actual_title,expected_title,"Verifying page title ------");
+	}
+
+	@AfterMethod
+	public void takeScreenshot(ITestResult result)
+	{
+		if(ITestResult.FAILURE == result.getStatus())
+		{
+			File f = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+
+			Files.copy(f, new File("C:\\Users\\KAILASH KANAK\\eclipse-workspace\\Deepak_Selenium\\screenShot\\xoxoday1.png"));
+
+		}
+	}
+
+	@AfterTest
+	public void closeBrowser()
+	{
+		driver.quit();
+	}
+}
+
+
+****************************************************************************************************************************
+
+
+*******************Taking Screenshot of failed TestCase & page title validation using Soft Assert *********************
+
+
+
+public class DeomoOfSoftAssert {
+	
+	WebDriver driver;
+	
+	@BeforeTest
+	public void launchBrowser()
+	{
+		WebDriverManager.chromedriver().setup();
+		
+		driver=new ChromeDriver();
+		
+		driver.manage().window().maximize();
+		
+		driver.manage().deleteAllCookies();
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		
+		Date d=new Date();
+		
+		System.out.println("*************** Test Execution Date : "+d.toString()+"***************");
+	}
+	
+	@Test
+	public void pageTitleValidationUsingSoftAssert()
+	{
+				
+		driver.get("https://www.xoxoday.com");
+		
+		String actual_title=driver.getTitle();
+		
+		String expected_title="Rewards, Incentives, Payouts, Perks, Loyalty & Engagement";
+		
+		SoftAssert softVerify = new SoftAssert();
+		
+		softVerify.assertEquals(actual_title,expected_title, "Page title verification with Soft assert");
+		
+		softVerify.assertAll(); // This piece of code is used to report Failed message
+	}
+	
+	@AfterMethod
+	public void takeScreenShot(ITestResult result) throws IOException
+	{
+		if(ITestResult.FAILURE==result.getStatus())
+		{
+			File f = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+			
+			Files.copy(f, new File("C:\\Users\\KAILASH KANAK\\eclipse-workspace\\Deepak_Selenium\\screenShot\\xoxoday1.png"));
+			
+		}
+	}
+	
+	@AfterTest
+	public void closeBrowser()
+	{
+		driver.quit();
+	}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
