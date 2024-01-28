@@ -1,17 +1,26 @@
 package automationscript;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
+import com.google.common.io.Files;
 
 public class DropDown {
 WebDriver driver;
@@ -54,5 +63,23 @@ WebDriver driver;
 		
 		System.out.println(dropDownItems);
 	}
+	
+	@AfterMethod
+	public void takeScreenShotofFailedTestCase(ITestResult result) throws IOException
+	{
+		if(ITestResult.FAILURE==result.getStatus())
+		{
+			File f = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+			
+			Files.copy(f, new File("D:\\SeleniumScript\\KAILASK_KANAK_AUTOMATION_SCRIPT\\AutomationScript\\screenshot\\softAssert.png"));
+		}
+	}
+	
+	@AfterTest
+	public void closeBrowser()
+	{
+		driver.close();
+	}
+
 
 }
