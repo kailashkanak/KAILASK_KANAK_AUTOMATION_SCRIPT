@@ -13,7 +13,8 @@ Author By Kailash Kanak
     a. To Find Broken Link <br>
     b. Form fill<br>
     c. Image Size <br>
-    d. Imasge Alt Text
+    d. Image Alt Text <br>
+    e. DropDown Handle 
    <br>
 
 3. Project "Kailash_Project contains basic string manipulation Programs and is created by Kay Kay<br>
