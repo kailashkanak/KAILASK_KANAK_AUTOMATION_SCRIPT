@@ -16,7 +16,7 @@ Author By Kailash Kanak
     d. Imasge Alt Text
    <br>
 
-3. Project "Kailash_Project contains basic string manipulation Programs <br>
+3. Project "Kailash_Project contains basic string manipulation Programs and is created by Kay Kay<br>
 
 
 
