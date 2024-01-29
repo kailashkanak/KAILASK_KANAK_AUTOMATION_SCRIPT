@@ -13,6 +13,11 @@ Author By Kailash Kanak
     a. To Find Broken Link <br>
     b. Form fill<br>
     c. Image Size <br>
-    d. Imasge Alt Text 
+    d. Imasge Alt Text
+   <br>
+
+3. Project "Kailash_Project contains basic string manipulation Programs <br>
+
+
 
 
