@@ -1,0 +1,9 @@
+Create manifest -> echo Main-Class: DisplayName >manifest.txt
+create jar -> jar cvfm DisplayName.jar manifest.txt *.class
+create zip -> java -cp DisplayName.zip DisplayName
+
+create zip -> java -cp AutomationScript.zip BrokenLink
+
+jar cvfm AutomationScript.jar manifest.txt *.class
+
+jar cvfm AutomationScript-0.0.1-SNAPSHOT.jar manifest.txt *.class
