@@ -3,14 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="automationscript.SoftAssertDemo">
+      <class name="automationscript.BrokenLink">
         <methods>
           <include name="startBrowser"/>
-          <include name="dropDownSelectItem"/>
-          <include name="takeScreenShotofFailedTestCase"/>
+          <include name="takeScreenshot"/>
+          <include name="findBrokenLink"/>
           <include name="closeBrowser"/>
         </methods>
-      </class> <!-- automationscript.SoftAssertDemo -->
+      </class> <!-- automationscript.BrokenLink -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
