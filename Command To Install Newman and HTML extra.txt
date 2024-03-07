@@ -1,0 +1,15 @@
+To Install Newman:
+
+First export your API collection from postman to any location (C,D E drive)
+
+1. Open command prompt
+
+Command : npm install -g newman
+
+2. command to run newman
+command: newman run "path to exported API collection/ ESYA_HES_API or drag and drop the file"
+
+3. Install Newman-reporter-htmlextra
+
+Command to run htmlextra: npm install -g newman-reporter-htmlextra
+
