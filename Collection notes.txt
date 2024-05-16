@@ -1,0 +1,1010 @@
+	Collection:
+		
+		A collection is a group of objects. It is a sinngle entity which represents multiple objects.
+
+
+	Collection Framework:
+
+		A Collection Framework defines the different interfaces and classes by which we can represent group of objects into a collection.
+
+		Child Interface:
+
+		Interface under Collection Framework:
+
+		a. Collection (interface) -->
+						i.   List -->
+								- ArrayList(Class)
+								- LinkedList(Class)
+						ii.  Set -->
+								-HashSet
+								-LinkedHashSet
+						iii. Queue -->
+								-PriorityQueue (Class)
+
+		b. Map (interface)
+						i. HashMap
+
+						ii. LinkedHashMap
+
+						iii. HashTable
+
+
+		Methods available in Collection Interface:
+
+		* add(specify object) --> It will add single object to the collection
+		* addAll(Collection c) --> Will add collection
+		* remove(object c) --> It is used to delete an object from the collection
+		* removeAll(collection c) --> remove all element from the collection
+		* retainAll(collection c) --> Remove all object except c
+		* clear() --> will clear all objects from the collection
+		* isEmpty() --> It will check whether the collection is empty or not
+		* size() --> This will give the count of total objects available in collection
+		* contains(c) --> This will check whether object c is available in collection or not.
+		* containsAll(c) --> will check aa the elements are available in collection.
+		* toArray(collection ch) --> It will convert the collection into an Array.
+
+
+
+
+
+						
+
+	Disadvantages of Array:
+	1. Fixed size
+	2. Stores only same data type element (Stores homogenious data)
+	3. Pre-defined methods are not available for Array. (For eg. if we want to sort or search data, we need to write logic for it)
+
+
+	
+	Q. Why do we need a collection?
+
+	   A collection provides a set of classes and Interfaces. 
+
+	Advantages of collection over Array:
+
+	1. We can increase or decrease the size of the collection.
+	
+	2. Can store homogeneous data as well as Hetrogenious data.
+
+	3. It is implemented by underlying data structure. Ready made methods are available.
+
+	
+
+	Difference between Collection (Interface) and Collections
+
+	i. Collection is an interface which comes in Collection Framework
+
+	ii. Collections is a class which comes under java.util package.
+
+		Methods available in Collections class:
+			* Collections.sort(ar) // This will sort collection if it contains same data type value
+			* Collections.shuffle(ar)
+
+	In Java, the Collections.shuffle() method is used to randomly permute the order of elements in a list. This method is part of the Java Collections Framework 
+	and is found in the java.util.Collections class.
+
+	Here's a detailed breakdown of how Collections.shuffle() works:
+
+	Purpose: The primary purpose of Collections.shuffle() is to randomize the order of the elements in a list. This can be useful in various scenarios, 
+	such as creating a random order of items (like shuffling a deck of cards).
+	
+	Usage:
+	
+	Syntax: Collections.shuffle(List<?> list)
+	Parameter: The method takes a single parameter list, which is the list to be shuffled.
+	Exceptions: The method throws UnsupportedOperationException if the specified list or its list-iterator does not support the set operation.
+	Functionality: The shuffle() method randomly permutes the list using a default source of randomness, which is generally adequate for most purposes. 
+	If a specific randomization process is required (for example, with a specified seed for reproducibility), there is an overloaded version of the method:
+	Syntax: Collections.shuffle(List<?> list, Random rnd)
+	Parameter: In addition to the list, this method takes a Random object as a second parameter to control the source of randomness.
+	Implementation: Internally, the method typically uses a variation of the Fisher-Yates shuffle algorithm. This involves iterating over the list from last to first, 
+	and for each element, swapping it with a randomly selected index that is either the same or lower. This ensures that each permutation of the list is equally 
+	probable.
+
+
+	import java.util.ArrayList;
+	import java.util.Collections;
+	import java.util.List;
+	class HelloWorld
+	{
+    		public static void main(String[] args) 
+		{
+        		List<String> myList = new ArrayList<>();
+        		myList.add("Apple");
+        		myList.add("Banana");
+        		myList.add("Cherry");
+        		myList.add("Date");
+
+        		System.out.println("Original list: " + myList);
+
+        		// Shuffle the list
+        		Collections.shuffle(myList);
+
+        		System.out.println("Shuffled list: " + myList);
+    		}
+	}
+
+		eg: ArrayList<Integer> ar = new ArrayList<Integer>();
+
+			ar.add(12);
+			ar.add(4);
+			ar.add(1);
+			ar.add(3);
+			ar.add(5);
+		To sort this, we can use:
+
+			Collections.sort(ar);
+
+	
+
+***************************************************************************************************************************************************************************
+
+
+	Main Interfaces in the Collection Framework (Interface)
+
+	1. List (Interface)
+		
+		Methods available in List:
+
+		* add(index, object c)
+		* addAll(index, collection ch)
+		* remove(index);
+		* get(index) --> it will give you an object from the specified index
+		* set(index, new object) --> this will replace a new object at the specified index.
+		* 
+
+	2. Set (Interface)
+
+	3. Queue (Interface)
+
+	1. List Interface: 
+	
+		It is the child interface of the Collection interface.
+	
+	When to use List interface in a case where we want insertion order to be preserved and want duplicate value to be inserted.
+
+		--> Insertion order preserved.
+
+		--> Duplicate allowed
+
+	Note:
+
+	Classes which implements List interface are:
+
+		a. ArrayList
+
+		b. LinkedList
+
+		c. Vector/Stack (These two are also called legacy classes)
+
+	
+
+	2. Set Interface: It is the child interface of the collection interface. 
+
+	
+	When to use List interface in a case where we doesnot want insertion order to be preserved and doesnot want  duplicate value to be inserted. 
+
+	Classes implementing Set Interface:
+
+		a. HashSet
+
+		b. LinkedHashSet
+
+	
+	3. Queue interface:
+
+		It is the child interface of Collection interface. It used in a case where we need to follow FIFO concept.
+
+	Classes which implements Queue interface:
+		
+		1. PriorityQueue
+
+
+*************************************************************************************************************************************************************************
+
+	Map Interface: This interface is not related to Collection Interface.
+
+	This interface is used when we want to store group of objects in the Key-value pair. Key cannot be duplicate whereas a value can be duplicate. 
+
+	eg: 
+
+	Key		Value
+
+	101		David
+
+	102		Smith
+
+	103		David
+
+	
+	Classes which implements Map interface are:
+
+	1. HashMap
+
+	2. LinkedHashMap
+
+
+
+***************************************************************************************************************************************************************************
+
+	ArrayList : It is a class which implements List Interface.
+		    It is a class present under java.util package
+
+		Declaring an ArrayList:
+
+			ArrayList ar = new ArrayList(); 
+
+			(If we create ArrayList in this way, it will allocate deault 10 memory allocation). 
+
+			This will store data of different type. Hetrogenous data.			
+
+			The index will start from 0 upto size -1 that will be 9
+
+		here ar will store data index wise.
+
+	Note : If we want to store data of same type or primitive data type, In this case we can use Wrapper class.
+
+	Eg:
+
+	ArrayList<Integer> ar = new ArrayList<Integer>();
+
+	Here ar collection will store only Integer objects.
+
+	Declaring An ArrayList:
+
+	1. ArrayList<String> arr1 = new ArrayList<String>(); // Will store string data
+
+	2. ArrayList<Integer> arr2 = new ArrayList<Integer>(); // Will store Integer data
+
+	3. ArrayList arr3 = new ArrayList(); // Will store hetrogenous data.
+
+	
+	// Adding value to arr3
+
+		arr3.add(123); // Store Integer value
+
+		arr3.add("Welcome"); // store string value
+
+		arr3.add('G'); // store character value
+
+		arr3.add(true); // store boolean value
+
+
+	// print data of ArrayList arr3
+
+		System.out.println(arr3);
+
+	// Display the number of elements available in ArrayList:
+
+	System.out.println("Elements available in the ArrayList : "+ arr3.size());
+
+	
+	// Remove Element from ArrayList
+
+		arr3.remove(2) // It will remove the element available at index 2 -->  will  delete 'G' from the list
+		
+					OR
+
+		arr3.remove('G');
+
+
+	// Adding new element in between the list
+
+		arr3.add(index, value);
+
+		arr3.add(2, "Nice to see you");
+
+	// Adding element
+
+		arr3.add(45); // This will add the data at the end in the ArrayList
+
+	// Retrieving specfic data from the list
+
+		arr3.get(index)
+
+		arr3.get(2); // It will return the data from index 2
+
+	// Change value / Replace value
+
+		arr3.set(index, value)
+
+	// To search a specific value from the list
+
+		arr3.contains("Nice to see you"); // This will return either true or false
+
+	// Method to check whether List is Empty
+
+		arr3.isEmpty() --> This will return true if there is any data and false in case if it is empty
+
+	
+// Reading data using for Loop:
+
+		for(int i=0;i<arr3.size();i++)
+		{
+			System.out.println(arr3.get(i));
+
+		}
+
+
+	// Displaying data using for .. each loop
+
+	for(Object e:arr3) // Here e is an Object type variable which can store any data type value
+	{
+		System.out.println(e);  
+	}
+
+
+	// Displaying list data using iterator
+
+		Iterator is a parent Interface of Collection
+
+	Iterator it = arr3.iterator(); // 
+
+	while(it.hasNext()) // This method inside the loop will return true until there are values. Once it reach the end of the list it will return false
+	{
+		System.out.println(it.next());
+	}
+
+	
+	// Adding one list to another, we use addAll()
+
+		ArrayList a1 = new ArrayList();
+
+		a1.add(arr3);
+
+	// Remove all data from a1
+
+		a1.removeAll(arr3);
+
+
+	Sorting List
+
+	To do this we can use sort() from Collections class from java.util package
+
+	Collections.sort(arr3); // This will sort the list in ascending order
+
+	* Now we want to sort a list in Descending order
+
+	Collections.sort(arr3,Collections.reverseOrder());
+
+
+	**************************** Converting Array into ArrayList *****************************************
+
+	String[] arr = {"Dog","Cat","Parrot"};
+
+	Now convert this array into ArrayList
+
+	ArrayList myArrayList = new ArrayList(Arrays.asList(arr));
+
+
+
+**************************************************************************************************************************************************************************
+
+	LinkedList:
+
+	When we need to go for ArrayList and When to go for LinkedList
+
+	1. ArrayList
+
+		- When we require Frequent retrieving of element
+
+		- Elements are stored in Consecutive order
+
+	2. LinkedList
+
+		- When require more number of operation like Insertion and Deletion
+
+		- Elements are store randomly and memories are linked with each other
+
+		- Use to represent Stack and Queue
+
+	Note: The default size of ArrayList is 10
+
+		In LinkedList there is no default allocation as the stores data in the nodes which contains the address of previous node and Next node.
+
+
+	****** Methods Available in LinkedList ********************
+
+	- add(object);
+
+	- add(index, object)
+
+	- addAll(collection)
+
+	- remove(x)
+
+	- remove(index)
+
+	- removeAll(collection)
+
+	- arr.get(index)
+
+	- arr.set(index, object)
+
+	- addFirst(object)
+
+	- addLast(object)
+
+	- removeFirst(object)
+
+	- removeLast(object)
+
+	- getFirst()
+
+	- getLast()
+	
+	
+	public  class LinkedListDemo
+	{
+		public static void main(String[] args)
+		{
+			LinkedList lk = new LinkedList();
+			
+			// Add element to linkedlist
+
+			lk.add(100);
+
+			lk.add(25.5);
+
+			lk.add("Welcome");
+
+			lk.add(true);
+
+			lk.add('A');
+
+			lk.add(null); // null is also accepted in the linkedlist
+
+			// Displaying data
+
+			System.out.println(lk);
+
+			int list_size = lk.size();
+
+			System.out.println("Total Elements available in the List are : "+list_size);
+
+			// To remove element from the linked list
+
+			lk.remove(3); // here 3 is an index of the LinkedList
+
+			// Adding element in the middle of the linkedlist
+
+			lk.add(3, "Hello"); here 3 is index number
+
+			// Retriving data from the list
+
+			System.out.println(lk.get(3));
+
+			
+
+			
+
+			
+		}
+	}
+
+
+	********************************* Some specific method for linkedList to implement Stack and Queue **************************************************
+
+	LinkedList l1 = new LinkedList();
+
+	l1.add("Dog");
+
+	l1.add("Cat");
+
+	l1.add("Elephant");
+
+	System.out.println(l1);
+
+	// inserting element at the first
+
+	l1.addFirst("Horse");
+
+	// Inserting element at the last
+
+	l1.addLast("Hen");
+
+	System.out.println(l1);
+
+	// Get the first and the last element of the LinkedList
+
+	Object e1 = l1.getFirst();
+
+	Object e2 = l1.getLast();
+
+	// Remove first and the last element
+
+	l1.removefirst();
+
+	l1.removeLast();
+
+	
+
+***************************************************** HashSet **********************************************************************************************
+
+	Set : Set is a child interface of Collection interface.
+	
+	Implementing class of set interface
+
+	1. HashSet: This can be used in a scenario where we want to represent a group of object as a collection where duplicate objects are not allowed. 
+		    - Also we used this when insertion order not required to maintain.
+		    - Data is inserted using HashCode.
+		    - As insertion order is not maintain so there is no index concept here.
+		    - Hetrogenious data is supported
+		    - Null is also supported. We can store null
+
+	When to use HashSet:
+		   
+		    - When we have search operation then we can use HashSet
+
+	*** Ways to create HashSet ***
+
+	HashSet hs = new HashSet(); // This is the default way to create Hashset. 
+
+		     By default this will allocate 16 memory allocations
+
+	
+	Note : We need to think about two things while creating HashSet
+		
+			1. Load factor / Fill ratio
+
+	Loadfactor or fill ratio is an important aspect of Set. 
+
+	Suppose we create a HashSet hs. The initial memory allocation for the Hashset is 16. If the Loadfactor is 0.75 it means when the memory of this HashSet is 
+
+	75% filled then it will create a new memory increasing the size. All the available data will be copied and the new data will be inserted at the end.
+
+	We can control the initial allocation and load factor. 
+
+	To do this we will declare the HashSet in the below way:
+
+	// Declaring the HashSet using load factor or fill ratio
+
+	HashSet hs = new HashSet(100); // This will allocate memory or 100 elements
+
+	HashSet hs = new HashSet(100, 0.75); // Declaring memory allocation with load factor
+
+	Restricting for a particular data type
+
+	HashSet<Integer> hs = new HashSet<Integer>(100.0.75);
+
+	Note: HashSet class doesn't have its own method. It implements methods from Set Interface.
+
+
+	Methods implemented by HashSet
+
+	1. add(value)
+
+	2. addAll(collection)
+
+	3. remove(value or object name);// Here we cannot delete data with index
+
+	4. removeAll(Collection)
+	
+	5. contains(object); // This will return True or false
+
+	6. containsAll(collection)
+
+	7. isEmpty() // Return True if it is empty else return false
+
+	We can read data using
+	
+	* for .. each
+
+	* Iterator
+	
+	
+	Note : Sorting and shuffling is not possible as insertion order is not preserved.
+
+	If we want to sort this HashSet elements then we need to convert it into ArrayList
+
+	public class HashSetDemo
+	{
+		public static void main(String[] args)
+		{
+			HashSet hs = new HashSet(); // The default memory allocation is 16 and the default loadfactor will be 0.75
+
+			// configuring default allocation and load capacity
+
+			//HashSet hs = new hashSet(100, (float)0.90); By declaring this way the initial capacity of the HashSet will be 100 and the load factor will be 90%
+			
+			//For storing similar kind of data
+
+			//HashSet<Integer> hs = new HashSet<Integer>(100, (float)0.90);
+
+			hs.add(12);
+			hs.add('A');
+			hs.add("Kumar");
+			hs.add(12.78);
+			hs.add(true);
+			hs.add(null);
+
+		// Removing element
+		
+			hs.remove(12.78);
+
+		// cheking whether 12.78 still exist in the collection
+
+			System.out.println(hs.contains(12.78)); // this will display False
+
+		// checking whether collection is empty
+
+			System.out.println(hs.isEmpty()); // This will display false as set contains value
+
+		// To read data from Hashset, we can either use for each or iterator
+
+		// Reading data from Hashset using for--each loop
+
+			for(Object e: hs)
+			{
+				System.out.println(e);
+			}
+
+		// Reading data from HashSet using Iterator
+
+		Iterator it = hs.iterator();
+
+		while(it.hasNext())
+		{
+			System.out.println(it.next());
+		}
+
+			
+						
+		}
+	}
+
+
+	Performing union, intersection and difference
+
+	HashSet<Integer> set1 = new HashSet<Integer>();
+
+	set1.add(1);
+	set1.add(2);
+	set1.add(3);
+	set1.add(4);
+	set1.add(5);
+
+	HashSet<Integer> set2 = new HashSet<Integer>();
+
+	set2.add(3);
+	set2.add(4);
+	set2.add(5);
+
+	// Now we want to do union of these two sets. Here union will combine the the two sets and remove the duplicates values.
+
+	//union
+
+	set1.addAll(set2); [1,2,3,4,5]
+
+	// Intesection : It will store the common value 
+
+	set1.retainAll(set2); // this will display the common value from both the sets [3,4,5]
+
+	// Difference
+
+	set1.removeAll(set2); [1,2]
+
+	
+
+	
+
+	
+
+	
+
+	2. LinkedHashSet: This is implemented class of set Interface
+
+		
+	Difference between HashSet and LinkedhashSet
+
+	HashSet							LinkedHashSet
+
+	1. Duplicate not allowed				1. Duplicates not allowed									
+
+	2. Insertion order not preserved			2. Insertion order is preserved
+
+								3. Whatever method implemented by HashSet is also implemented by LinkedHashSet
+
+
+	3. Data structure use here is HashTable			4. Data structure use is HashTable + LinkedList
+
+
+	
+******************************************************************** QUEUE ****************************************************************************************
+
+	Queue:
+
+		Queue is a child interface of Collection (Interface).
+
+			Queue Interface
+	
+				i. Dequeue interface
+
+				ii. BlockingQueue interface
+
+				iii. BlockingDeQueue
+
+		* Implementing class of Queue interface
+
+			i. PriorityQueue
+
+			ii. LinkedList
+
+		
+	Note: LinkedList is a class which can implements both List interface as well as Queue interface.
+
+	
+	We will use Queue interface when we need to represent a group of objects which are prior to process.
+
+	
+	Concept of QUEUE:
+
+	- Queue works on FIFO (First In First Out) concept. 
+	- It has two ends, Rear and Front
+	- Data is inserted from the rear
+	- Data is exited from the Front
+
+
+	Linked List								PriorityQueue
+	
+	1. Insertion Order is maintained					1. Insertion Order is Maintained
+
+	2. Duplicates values are allowed					2. Duplicates are allowed
+
+	3.Hetrogenious (Different data types) data are allowed			3. Hetrogenious data are not allowed. Can store only Homogenious data.
+
+
+	Methods used by LinkedList class and PriorityQueue class from the Queue interface:
+
+	1. add()
+
+		When this method add an object successfully, it returns True or returns Exception in case if unable to add
+
+	2. offer()
+
+		
+		When this method add an object successfully, it returns True or returns false in case if unable to add
+	
+
+	3. element()
+
+			This method will return the element at the front. When Queue is empty and we are trying to access the Front data, then in this case
+			this will throw an Exception "No Such Element"
+		
+
+	4. peek()
+		
+		This method will return the element at the front. When Queue is empty and we are trying to access the Front data, then in this case
+			this will return Null
+
+	
+	5. remove()
+
+		This method will return the Header element and after returning it will remove the data from the Head. 
+		In case if the Queue is empty, then it will return an Exception
+
+
+	6. poll()
+
+		This method will return the Header element and after returning it will remove the data from the Head. 
+		In case if the Queue is empty, then it will return Null.
+
+	We can access the above methods by using LinkedList class or PriorityQueue class.
+
+	Observation:
+		1. When we use poll method to delete data and the queue is empty the it returns the below error:
+
+		The deleted Item from the Front is : null
+		[]
+	
+	
+		2. When we use remove method to delete data and the queue is empty the it returns the below error:
+		
+		Exception in thread "main" java.util.NoSuchElementException
+
+	
+	// Program to impement above methods for Queue
+
+	package com.collection;
+
+	import java.util.PriorityQueue;
+
+	public class PriorityQueueDemo 
+	{
+
+		public static void main(String[] args) 
+		{
+			PriorityQueue pq = new PriorityQueue();
+		
+			// Adding elements to queue by using add() or offer() method
+		
+			pq.add("A");
+			pq.add("B");
+			pq.add("C");
+		
+			// adding element ny offer()
+		
+			pq.offer("C");
+			pq.offer("D");
+
+			//Displaying data using Iterator
+		
+			Iterator itr = pq.iterator();
+		
+			while(itr.hasNext())
+			{
+				System.err.println(itr.next());
+			}
+		
+			//Displaying data using for .. each loop
+		
+			for(Object e:pq)
+			{
+				System.out.println(e);
+			}
+
+			
+		
+			System.out.println(pq);
+		
+			// Want to get the Header element or element available at the Front end
+		
+			Object e = pq.element();
+			System.out.println("The Element at the front is : "+ e);
+		
+			Object dItem = pq.remove();
+		
+			System.out.println("The deleted Item from the Front is : "+dItem);
+		
+			System.out.println(pq);
+		
+			Object dItem1 = pq.remove();
+			System.out.println("The deleted Item from the Front is : "+dItem1);
+		
+			System.out.println(pq);
+		
+			Object dItem2 = pq.remove();
+			System.out.println("The deleted Item from the Front is : "+dItem2);
+		
+			System.out.println(pq);
+		
+			Object dItem3 = pq.remove();
+			System.out.println("The deleted Item from the Front is : "+dItem3);
+		
+			System.out.println(pq);
+		
+			Object dItem4 = pq.remove();
+			System.out.println("The deleted Item from the Front is : "+dItem4);
+		
+			System.out.println(pq);
+		
+			Object dItem5 = pq.remove();
+			System.out.println("The deleted Item from the Front is : "+dItem5);
+		
+			System.out.println(pq);
+		
+		}
+
+	}
+
+
+	The output of the above program :
+
+	[A, B, C, C, D]
+	The Element at the front is : A
+	The deleted Item from the Front is : A
+	[B, C, C, D]
+	The deleted Item from the Front is : B
+	[C, D, C]
+	The deleted Item from the Front is : C
+	[C, D]
+	The deleted Item from the Front is : C
+	[D]
+	The deleted Item from the Front is : D
+	[]
+
+
+	LinkedList program implementing Queue interface:
+
+	public class LinkedListDemo {
+
+	public static void main(String[] args) {
+		LinkedList lk = new LinkedList(); 
+		
+			// LinkedList can store data of all types. Priority Queue doesn't allowed
+			// Adding elements to queue by using add() or offer() method
+		
+		lk.add("A");
+		lk.add("B");
+		lk.add("C");
+		lk.add(100);
+		
+		// adding element ny offer()
+		
+		lk.offer("C");
+		lk.offer("D");
+		
+		System.out.println(lk);
+		
+		//Displaying data using Iterator
+		
+		Iterator itr = lk.iterator();
+		
+		while(itr.hasNext())
+		{
+			System.err.println(itr.next());
+		}
+		
+		//Displaying data using for .. each loop
+		
+		for(Object e:lk)
+		{
+			System.out.println(e);
+		}
+		
+		// Want to get the Header element or element available at the Front end
+		
+		Object e = lk.element();
+		System.out.println("The Element at the front is : "+ e);
+		
+		Object dItem = lk.remove();
+		
+		System.out.println("The deleted Item from the Front is : "+dItem);
+		
+		System.out.println(lk);
+		
+		Object dItem1 = lk.remove();
+		System.out.println("The deleted Item from the Front is : "+dItem1);
+		
+		System.out.println(lk);
+		
+		Object dItem2 = lk.remove();
+		System.out.println("The deleted Item from the Front is : "+dItem2);
+		
+		System.out.println(lk);
+		
+		Object dItem3 = lk.remove();
+		System.out.println("The deleted Item from the Front is : "+dItem3);
+		
+		System.out.println(lk);
+		
+		Object dItem4 = lk.remove();
+		System.out.println("The deleted Item from the Front is : "+dItem4);
+		
+		System.out.println(lk);
+		
+		Object dItem5 = lk.remove();
+		System.out.println("The deleted Item from the Front is : "+dItem5);
+		
+		System.out.println(lk);
+
+	}
+
+}
+
+
+	
+
+	
+
+	
+
+		
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	 
+	
+	
+
+	
